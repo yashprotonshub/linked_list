@@ -27,7 +27,28 @@ class Linked_list:
             print(temp_node.data)
             temp_node = temp_node.address
         print(temp_node.data)
-            
+        
+    def insert_at_particular_position(self, index , input_data ):
+        c=0
+        temp_node = linked_list_object.head
+        while(c!=2):
+            temp_node = temp_node.address
+            c+=1
+        new_node = Node(input_data)
+        storing_temp_node_address = temp_node.address
+        temp_node.address=new_node
+        new_node.address = storing_temp_node_address
+        
+    def update_node_of_linked_list(self, index, updated_data):
+        c=0
+        temp_node = linked_list_object.head
+        while(c!=index-1):
+            temp_node = temp_node.address
+            c+=1
+        temp_node.data = updated_data
+        
+        
+        
 linked_list_object = Linked_list()
 linked_list_object.head = first_node
 
@@ -36,4 +57,6 @@ linked_list_object.insertion_at_first("this is latest")
 linked_list_object.insertion_at_first("NOOO, this is latest data")
 linked_list_object.insertion_at_last(10000)
 linked_list_object.insertion_at_last(1222222)
+linked_list_object.insert_at_particular_position(int(input("enter index where you want to insert the linked list "  )), input("enter data you want to input : "))
+linked_list_object.update_node_of_linked_list(int(input("enter index of linked list : ")), input("enter data you want to update for linked list :"))
 linked_list_object.printing_linked_list()
