@@ -3,7 +3,7 @@ class Node:
         self.address = None
         self.data = data
 
-first_node = Node(13)
+first_node = Node(1)
 
 class Linked_list:
     def __init__(self):
@@ -22,7 +22,6 @@ class Linked_list:
         
     def printing_linked_list(self):
         temp_node = linked_list_object.head
-        print(temp_node.address)
         while(temp_node.address != None ):
             print(temp_node.data)
             temp_node = temp_node.address
@@ -47,16 +46,49 @@ class Linked_list:
             c+=1
         temp_node.data = updated_data
         
+    def removing_first_node_of_linked_list(self):
+        linked_list_object.head = linked_list_object.head.address
+        
+    def removing_last_node_of_linked_list(self):
+        temp_node = linked_list_object.head
+        while(temp_node.address !=None):
+            current_node = temp_node 
+            temp_node = temp_node.address
+        current_node.address = None
+        
+    def removing_node_at_particular_index(self,index):
+        
+        current_node = linked_list_object.head
+        previous_node = current_node  
+        c=0
+        while(c!=index):
+            previous_node = current_node 
+            current_node = current_node.address
+            c+=1
+        previous_node.address = current_node.address 
+    
+    def length_of_linked_list(self):
+        current_node = linked_list_object.head
+        c=1
+        while(current_node.address != None):
+            current_node = current_node.address
+            c+=1
+        return c
+    
+        
         
         
 linked_list_object = Linked_list()
 linked_list_object.head = first_node
 
-linked_list_object.insertion_at_first(9)
-linked_list_object.insertion_at_first("this is latest")
-linked_list_object.insertion_at_first("NOOO, this is latest data")
-linked_list_object.insertion_at_last(10000)
-linked_list_object.insertion_at_last(1222222)
-linked_list_object.insert_at_particular_position(int(input("enter index where you want to insert the linked list "  )), input("enter data you want to input : "))
-linked_list_object.update_node_of_linked_list(int(input("enter index of linked list : ")), input("enter data you want to update for linked list :"))
-linked_list_object.printing_linked_list()
+second_node = Node(2)
+third_node = Node(3)
+fourth_node = Node(4)
+fifth_node = Node(5)
+
+linked_list_object.head.address = second_node 
+second_node.address = third_node
+third_node.address = fourth_node
+fourth_node.address = fifth_node
+returned_value = linked_list_object.length_of_linked_list()
+print("Length of the Linked List is : ",returned_value)
